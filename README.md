@@ -1,5 +1,7 @@
 # 2D_HSI_Gen (2D Hyperspectral Image Generator)
 
+Run main.m
+
 Basic useful feature list:
 
  * Visualize a 3D Hyperspectral Image
