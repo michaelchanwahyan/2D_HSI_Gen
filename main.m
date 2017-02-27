@@ -9,7 +9,7 @@ HSI = HSI / max( HSI(:) ) ;
 HSI( HSI < 0 ) = 0 ;
 
 GEN_opt.type           = 'fullspectral'  ; GEN_opt.outputFileName = 'HSI' ;
-%GEN_opt.type           = 'hyperspectral' ; GEN_opt.outputFileName = 'MS'  ;
+%GEN_opt.type           = 'hyperspectral' ; GEN_opt.outputFileName = 'HS'  ;
 %GEN_opt.type           = 'multispectral' ; GEN_opt.outputFileName = 'MS'  ;
 GEN_opt.outputExt      = 'png' ;
 GEN_opt.dsRatio        = 6     ;
