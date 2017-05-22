@@ -53,12 +53,14 @@ for wCnt = 1 : HSI_bandNum
     c_g      = exp( -abs(lambda-lambda_g)/alpha ) ;
     c_b      = exp( -abs(lambda-lambda_b)/alpha ) ;
     c_rgbVec = permute( [ c_r , c_g , c_b ] , [ 3 , 1 , 2 ] ) ;
-    %%% ==================================================== %
-    %%% convex combination from highest wavelength           %
-    %%% to prevent too dim color when far from R and G and B %
-    %%% ==================================================== %
-    %%beta = exp( -abs(lambda-max(wavelength))/(2*alpha) ) ;
-    %%c_rgbVec = (1-beta) * c_rgbVec + beta * permute( ones(1,3) , [ 3 , 1 , 2 ] ) ;
+    if( lambda > lambda_r * 1.2 )
+    % ==================================================== %
+    % convex combination from highest wavelength           %
+    % to prevent too dim color when far from R and G and B %
+    % ==================================================== %
+    beta = exp( -abs(lambda-max(wavelength))/(10*alpha) ) ;
+    c_rgbVec = (1-beta) * c_rgbVec + beta * permute( ones(1,3) , [ 3 , 1 , 2 ] ) ;
+    end
     HSI_3D_PERSP( (wCnt-1)*pixel_skip+1 : (wCnt-1)*pixel_skip+HSI_imgSizeM , ...
                   HSI_3D_PERSP_sizeN-(wCnt-1)*pixel_skip-HSI_imgSizeN+1 : HSI_3D_PERSP_sizeN-(wCnt-1)*pixel_skip , ...
                   : ) = repmat( HSI(:,:,wCnt) , 1 , 1 , 3 ) .* ...
