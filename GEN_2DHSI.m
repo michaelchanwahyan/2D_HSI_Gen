@@ -93,9 +93,6 @@ if( useRGB )
     G          = mean( HSI(:,:,g_response) , 3 ) ; G = G / max(G(:)) ;
     B          = mean( HSI(:,:,b_response) , 3 ) ; B = B / max(B(:)) ;
     RGB        = cat( 3 , R , G , B ) ;
-    HSI_3D_PERSP( (wCnt-1) * pixel_skip + 1                                     : (wCnt-1) * pixel_skip + HSI_imgSizeM       , ...
-                  HSI_3D_PERSP_sizeN - (wCnt-1) * pixel_skip - HSI_imgSizeN + 1 : HSI_3D_PERSP_sizeN - (wCnt-1) * pixel_skip , ...
-                                                                                :                                            ) ...
-             = RGB ;
+    HSI_3D_PERSP( i_start : i_end , j_start : j_end , : ) = RGB ;
 end
 end
